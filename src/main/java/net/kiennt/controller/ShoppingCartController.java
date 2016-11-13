@@ -1,7 +1,7 @@
 package net.kiennt.controller;
 
 import net.kiennt.exception.BadRequestException;
-import net.kiennt.exception.CustomException;
+import net.kiennt.exception.InternalServerErrorException;
 import net.kiennt.exception.InvalidSignatureException;
 import net.kiennt.model.Response;
 import net.kiennt.dto.Transaction;
@@ -25,6 +25,7 @@ public class ShoppingCartController {
     @Autowired
     TransactionService transactionService;
 
+    // TODO: Wrap all request parameters in Request object for future changes
     /**
      * @param authorization
      * @param txCode
@@ -66,7 +67,7 @@ public class ShoppingCartController {
             //TODO: paymentUrl should be configurable in config.properties or database. TBD
             response.setPaymentUrl("http://google.com.vn");
         } else {
-            throw new CustomException("Failed to initialise transaction: " + txCode);
+            throw new InternalServerErrorException("Failed to initialise transaction: " + txCode);
         }
         return response;
     }

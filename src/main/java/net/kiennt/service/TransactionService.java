@@ -1,6 +1,6 @@
 package net.kiennt.service;
 
-import net.kiennt.exception.CustomException;
+import net.kiennt.exception.InternalServerErrorException;
 import net.kiennt.dto.Transaction;
 import net.kiennt.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class TransactionService {
 
         Transaction returnTxn = null;
         if (transactionRepository.exists(transaction.getTxnCode())) {
-            throw new CustomException("Transaction txnCode: " + txCode + " already exists");
+            throw new InternalServerErrorException("Transaction txnCode: " + txCode + " already exists");
         } else {
             returnTxn = transactionRepository.save(transaction);
         }

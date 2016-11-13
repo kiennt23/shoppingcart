@@ -55,6 +55,9 @@ public class ShoppingCartExceptionHandler extends ResponseEntityExceptionHandler
 
     private String getReason(Throwable ex) {
         ResponseStatus annotation = findMergedAnnotation(ex.getClass(), ResponseStatus.class);
+        if (ex.getMessage() != null) {
+            return ex.getMessage();
+        }
         if (annotation != null) {
             return annotation.reason();
         }
