@@ -32,7 +32,7 @@ public class ShoppingCartExceptionHandler extends ResponseEntityExceptionHandler
      * @param request The HttpServletRequest, can be used to get parameters and headers. Hasn't been used yet.
      * @param ex The exception annotated with ResponseStatus annotation. HTTP error code and reason for error get from
      *           annotation.
-     * @return Message to return to client in a readable Response object dto.
+     * @return Response to return to client in a readable Response object dto.
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
