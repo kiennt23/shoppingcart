@@ -49,6 +49,7 @@ public class ShoppingCartController {
                                       @RequestParam(name = "tax_amt", required = false) String taxAmtStr,
                                       @RequestParam(name = "ntaxable_amt", required = false) String nTaxableAmtStr) {
 
+        //TODO: should we move to AOP code?
         if (!authenticationService.authenticate(authorization)) {
             throw new InvalidSignatureException("Signature not found.");
         }
